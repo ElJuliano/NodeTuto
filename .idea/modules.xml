@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/android/android.iml" filepath="$PROJECT_DIR$/app/android/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/android/build/generated/source/buildConfig/androidTest/androidTest.iml" filepath="$PROJECT_DIR$/app/android/build/generated/source/buildConfig/androidTest/androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/android/build/generated/source/buildConfig/buildConfig.iml" filepath="$PROJECT_DIR$/app/android/build/generated/source/buildConfig/buildConfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/core/core.iml" filepath="$PROJECT_DIR$/app/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/desktop/desktop.iml" filepath="$PROJECT_DIR$/app/desktop/desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/html/html.iml" filepath="$PROJECT_DIR$/app/html/html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/ios/ios.iml" filepath="$PROJECT_DIR$/app/ios/ios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/android/build/generated/source/r/r.iml" filepath="$PROJECT_DIR$/app/android/build/generated/source/r/r.iml" />
+    </modules>
+  </component>
+</project>
