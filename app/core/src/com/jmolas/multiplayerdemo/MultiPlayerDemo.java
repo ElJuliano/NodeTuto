@@ -138,7 +138,9 @@ public class MultiPlayerDemo extends ApplicationAdapter {
                     JSONObject data = (JSONObject) args[0];
                     String playerId = data.getString("id");
                     Gdx.app.log("SocketIO", "New player id : " + playerId);
-                    friendlyPlayer.put(playerId, new SpaceShip(friendlyShip));
+                    SpaceShip sp = new SpaceShip(friendlyShip, true);
+                    sp.setPosition(0, 300);
+                    friendlyPlayer.put(playerId, sp);
                 }
                 catch (JSONException e) {
                     Gdx.app.log("SocketIO", "Error getting new player id");
@@ -167,7 +169,7 @@ public class MultiPlayerDemo extends ApplicationAdapter {
                     Double x = data.getDouble("x");
                     Double y = data.getDouble("y");
                     if(friendlyPlayer.get(playerId)!= null) {
-                        friendlyPlayer.get(playerId).setPosition(x.floatValue(), y.floatValue());
+                        friendlyPlayer.get(playerId).setPosition(x.floatValue(), y.floatValue()+300);
                     }
                 }
                 catch (JSONException e) {
@@ -181,11 +183,11 @@ public class MultiPlayerDemo extends ApplicationAdapter {
                 JSONArray objects = (JSONArray)args[0];
                 try {
                     for(int i=0; i< objects.length(); i++) {
-                        SpaceShip coopPlayer = new SpaceShip(friendlyShip);
+                        SpaceShip coopPlayer = new SpaceShip(friendlyShip, true);
                         Vector2 position = new Vector2();
                         position.x = ((Double)objects.getJSONObject(i).getDouble("x")).floatValue();
                         position.y = ((Double)objects.getJSONObject(i).getDouble("y")).floatValue();
-                        coopPlayer.setPosition(position.x, position.y);
+                        coopPlayer.setPosition(position.x, position.y+300);
 
                         friendlyPlayer.put(objects.getJSONObject(i).getString("id"), coopPlayer);
                     }

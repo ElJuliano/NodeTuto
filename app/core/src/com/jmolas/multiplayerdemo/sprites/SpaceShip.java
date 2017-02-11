@@ -17,6 +17,12 @@ public class SpaceShip extends Sprite {
         previousPosition = new Vector2(getX(), getY());
     }
 
+    public SpaceShip(Texture texture, boolean flip) {
+        super(texture);
+        previousPosition = new Vector2(getX(), getY());
+        this.flip(true, true);
+    }
+
     public boolean hasMoved() {
         if(previousPosition.x != getX() || previousPosition.y != getY()) {
             previousPosition.x = getX();
@@ -24,5 +30,9 @@ public class SpaceShip extends Sprite {
             return true;
         }
         return false;
+    }
+
+    public void flip() {
+
     }
 }
