@@ -7,12 +7,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.jmolas.multiplayerdemo.entities.Bullet;
 import com.jmolas.multiplayerdemo.sprites.SpaceShip;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import io.socket.client.IO;
@@ -69,10 +71,29 @@ public class MultiPlayerDemo extends ApplicationAdapter {
 		batch.begin();
 		if(player != null) {
             player.draw(batch);
+
+            //Bullets to remove
+            ArrayList<Bullet> bulletsToRemove = new ArrayList<Bullet>();
+            for(Bullet bullet : player.getBullets() ) {
+                bullet.update(Gdx.graphics.getDeltaTime());
+                if(bullet.remove) {
+                    bulletsToRemove.add(bullet);
+                }
+            }
+            player.getBullets().removeAll(bulletsToRemove);
+
+            if (player != null) {
+                for(Bullet bullet : player.getBullets() ) {
+                    bullet.render(batch);
+                }
+            }
+
         }
         for(HashMap.Entry<String, SpaceShip> entry : friendlyPlayer.entrySet()) {
             entry.getValue().draw(batch);
         }
+
+
 		batch.end();
 	}
 
@@ -89,6 +110,9 @@ public class MultiPlayerDemo extends ApplicationAdapter {
             }
             else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                 player.setPosition(player.getX(), player.getY() - 200 * dt);
+            }
+            else if(Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+                player.addBullet();
             }
         }
     }
